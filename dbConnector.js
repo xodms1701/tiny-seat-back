@@ -1,16 +1,15 @@
-const Sequelize = require('sequelize');
-const dbconfig = require('./config').dbconfig;
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
-const schema = dbconfig.dbschema;
+require("dotenv").config();
 
 const sequelize = new Sequelize(
-  schema,
-  dbconfig.username,
-  dbconfig.password,
+  process.env.DB_NAME,
+  process.env.USERNAME,
+  process.env.PASSWORD,
   {
-    'host': dbconfig.host,
-    'dialect': dbconfig.dialect,
+    host: process.env.HOST,
+    dialect: "mysql",
     operatorsAliases: {
       $and: Op.and,
       $or: Op.or,
@@ -21,11 +20,11 @@ const sequelize = new Sequelize(
       $like: Op.like,
       $ne: Op.ne,
       $between: Op.between,
-      $gte: Op.gte
+      $gte: Op.gte,
     },
-    logging: false
+    logging: false,
   }
-)
+);
 
 // const auto = new SequelizeAuto(
 //   schema,

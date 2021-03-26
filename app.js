@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
-const jwtSecret = require("./config.json").jwt.secret;
 
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -48,7 +47,7 @@ let app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set("jwt-secret", jwtSecret);
+app.set("jwt-secret", "wkrdmsrortjr");
 
 app.use(logger("dev"));
 app.use(express.json());
